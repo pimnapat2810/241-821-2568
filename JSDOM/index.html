@@ -6,21 +6,94 @@
     <title>Document</title>
 </head>
 <body>
-    เพศ:
-    <input type="radio" name="gender" value="male" onchange="onchangeGender()"checked>ชาย
-    <input type="radio" name="gender" value="female" onchange="onchangeGender()">หญฺิง
+    <h2> แบบฟอร์มเลือกความสนใจ </h2>
+    <div id="content">
+    </div>
+   <input type="checkbox" name="interest" value="กีฬา">กีฬา
+   <input type="checkbox" name="interest" value="ดนตรี">ดนตรี
+   <input type="checkbox" name="interest" value="อ่านหนังสือ">อ่านหนังสือ
+   <br><br>
+   <button onclick="submitInterest()">ส่งข้อมูล</button>
     <script>
-    function onchangeGender(){
-        //เลือก gender ทุก input ออกมา
+       function submitInterest() {
+        //ดึงข้อมูลจาก checkbox ที่ถูกเลือก
+        let checkbox = document.querySelectorAll('input[name=interest]');
+        let contentHTML = '<ul>';
+        //เอา value ของ checkbox ที่ถูกเลือกออกมา
+        for (let i = 0; i < checkbox.length; i++){
+            if (checkbox[i].checked) {
+                //console.log(checkbox[i].value); //แสดงต่าที่เลิอกใน console
+                contentHTML += '<li>' +checkbox[i].value + '</li>';
+            }
+        }
+        //วนค่าที่เลือกใส่กลับไปที่ html
+        contentHTML += '</ul>';
+
+        //ใส่html ที่สร้างขึ้นใหม่ลงใน div id="content"
+        let contentDIV = document.getElementById('content');
+        contentDIV.innerHTML + contentHTML;
+       }
+
+    /* เพศ:
+    <input type="radio" name="gender" value="male"onchange="onchangeGender()" checked> ชาย
+    <input type="radio" name="gender" value="female"onchange="onchangeGender()"> หญิง
+    <script>
+        function onchangeGender() {
+            // เลือก gender ทุก input ออกมา
             let genderInputs = document.querySelectorAll('input[name="gender"]');
 
-        //เช็ค ตัวไหน มี check อยู่ ให้เอา value มาแสดง
-            for (let i = 0; i < genderInputs.length; i++){
-                if (genderInputs[i].checked){
-                    console.log("เพศที่เลือก: "+ genderInputs[i].value);
+            // เช็ค ตัวไหน มี check อยู่ ให้เอา value มาแสดง
+            for (let i = 0; i < genderInputs.length; i++) {
+                if (genderInputs[i].checked) {
+                    console.log("เพศที่เลือก:", genderInputs[i].value);
                 }
             }
+        }
+       /* console.log("onchangeGender");
+        }
+        /*<button onclick="userClicked()">Submit</button>
+    <div onclick="devCleck()">dev Clicked </div>
+   
+        function userClicked() {
+            console.log("User clicked the button!");
+        }
+        function devCleck() {
+            console.log("Developer clicked the div!");
+        } */
+
+    /*<div id="hi">Hi <span style="display: name;">A</span> </div>
+    <script>
+        let hiDOM = document.getElementById("hi");
+        hiDOM.innerHTML = 'hello <B>A</b>'
+        console.log(hiDOM.textContent);
+        console.log(hiDOM.innerText);
+        console.log(hiDOM.innerHTML); */
+
+    /* <button
+    onmouseover="onmouseoverFname()"
+    onmouseup="onmouseupFname()"
+    onmousedown="onmousedownFname()"
+    >Click</button>
+    <script>
+        // onmouseover คือเหตุการ์ที่เกิดขึ้นเมื่อเมาส์ชี้ไปที่องค์ประกอบ
+    function onmouseoverFname(){
+        console.log("Mouse is over the button");        
     }
+    function onmouseupFname(){
+        console.log("Mouse is up the button");
+    }
+    function onmousedownFname(){
+        console.log("Mouse down");
+    } */
+
+    /*  <input type="text" name="fname" onkeydown="onkeyFname(event)">
+    <script>
+        // onkeydown คือ user กดปุ่มคีย์บอร์ดลงไป จังหวะกด
+        // onkeyup คือ user กดปุ่มคีย์บอร์ด จังหวะปล่อย
+        // onkeypress คือ user กดปุ่มคีย์บอร์ดลงไป จังหวะกด (ไม่ค่อยได้ใช้)
+    function onkeyFname(){
+        let fname = document.querySelector('input[name="fname"]')
+       console.log('fname',fname.value);*/
     /* <button onclick="userClicked()">Submit</button>
     <div onclick="devCleck()">dev Clicked</div>
         function userClicked(){
@@ -29,6 +102,7 @@
         function devCleck(){
             console.log("Developer clicked the div!");
         }*/
+
     /* งานอดิเรก:
         <input type="checkbox" name="hobby" value="football"> Football
         <input type="checkbox" name="hobby" value="basketball"> Basketball
@@ -37,6 +111,7 @@
           for (let i = 0; i < checkboxesInput.length; i++){
             consloe.log(checkboxesInput[i].value);
           } */
+
     /* ชื่อ: <input
         id="fname"
         class="input"
